@@ -276,7 +276,14 @@ dialog.viewer::backdrop{background:rgba(5,4,13,.88);backdrop-filter:blur(6px)}
 
 /* ---------- music ---------- */
 .music{position:fixed;left:20px;bottom:20px;z-index:60}
-.music-pill{display:flex;align-items:center;gap:12px;padding:8px 16px 8px 8px;border-radius:999px;background:rgba(12,9,30,.78);border:1px solid var(--line-2);backdrop-filter:blur(14px);box-shadow:0 10px 30px -10px rgba(0,0,0,.7);min-height:48px}
+.music-play{display:flex;align-items:center;gap:12px;padding:2px 10px 2px 2px;border-radius:999px;min-height:40px}
+.music-more{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:var(--muted);transition:background .25s,color .25s,transform .3s}
+.music-more:hover{background:var(--glass-2);color:var(--text)}
+.music-more svg{width:18px;height:18px}
+.music.open .music-more{transform:rotate(180deg)}
+.yt-wrap{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
+.yt-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.music-pill{display:flex;align-items:center;gap:4px;padding:6px;border-radius:999px;background:rgba(12,9,30,.78);border:1px solid var(--line-2);backdrop-filter:blur(14px);box-shadow:0 10px 30px -10px rgba(0,0,0,.7);min-height:48px}
 .disc{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(from 0deg,#8b5cf6,#6366f1,#a855f7,#8b5cf6);animation:spin 4s linear infinite;animation-play-state:paused}
 .disc::after{content:"";width:10px;height:10px;border-radius:50%;background:#05040d}
 .music.playing .disc{animation-play-state:running}
@@ -326,7 +333,7 @@ footer p{color:var(--dim);font-size:.86rem}
   .stats{gap:12px}.stat{padding:20px 16px}.stat b{font-size:2rem}
   .projects,.stack-groups{grid-template-columns:1fr}
   .music-pill .txt{display:none}
-  .music-pill{padding:7px}
+  .music-pill{padding:5px}.music-play{padding:2px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
@@ -695,14 +702,19 @@ footer p{color:var(--dim);font-size:.86rem}
 <!-- ================= MUSIC ================= -->
 <div class="music" id="music">
   <div class="music-panel" id="musicPanel">
-    <div class="label"><span data-i18n="music.now">Daily rotation</span><a href="https://open.spotify.com/track/4xF4ZBGPZKxECeDFrqSAG4" target="_blank" rel="noopener">Spotify ↗</a></div>
-    <div id="spotifyEmbed"></div>
+    <div class="label"><span data-i18n="music.now">Daily rotation</span><span><a href="https://www.youtube.com/watch?v=xLOtq1KZApM" target="_blank" rel="noopener">YouTube ↗</a> · <a href="https://open.spotify.com/track/4xF4ZBGPZKxECeDFrqSAG4" target="_blank" rel="noopener">Spotify ↗</a></span></div>
+    <div class="yt-wrap"><div id="ytPlayer"></div></div>
   </div>
-  <button class="music-pill" id="musicBtn" aria-expanded="false" aria-controls="musicPanel" aria-label="Music player: snowfall by Øneheart and reidenshi">
-    <span class="disc"></span>
-    <span class="txt"><b>snowfall</b><small>Øneheart × reidenshi</small></span>
-    <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-  </button>
+  <div class="music-pill">
+    <button class="music-play" id="musicBtn" aria-pressed="false" aria-label="Play snowfall by Øneheart and reidenshi">
+      <span class="disc"></span>
+      <span class="txt"><b>snowfall</b><small>Øneheart × reidenshi</small></span>
+      <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    </button>
+    <button class="music-more" id="musicMore" aria-expanded="false" aria-controls="musicPanel" aria-label="Show music player">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+    </button>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
@@ -712,7 +724,7 @@ footer p{color:var(--dim);font-size:.86rem}
 /* =====================================================================
    EDIT YOUR CONTENT HERE
    ===================================================================== */
-const SPOTIFY_TRACK = "4xF4ZBGPZKxECeDFrqSAG4"; // snowfall — Øneheart, reidenshi
+const YT_VIDEO = "xLOtq1KZApM"; // snowfall — Øneheart x reidenshi (the official Topic upload blocks embedding, error 150)
 const CONTACT_EMAIL = "hirwaprince20@gmail.com";
 
 const SOCIALS = [
@@ -974,19 +986,30 @@ function strike(){
   setTimeout(()=>{ drawBolt(x, -20, x+(Math.random()-.5)*160, H+20, 2, .6, false); setTimeout(()=>bctx.clearRect(0,0,W,H), 90); }, 200);
 }
 
-/* ---------- music (Spotify iFrame API) ---------- */
-let spotify = null, wantPlay = false;
-const music = $('#music'), musicBtn = $('#musicBtn');
-window.onSpotifyIframeApiReady = (API) => {
-  API.createController($('#spotifyEmbed'), {uri:'spotify:track:'+SPOTIFY_TRACK, width:'100%', height:152, theme:'dark'}, (c) => {
-    spotify = c;
-    c.addListener('playback_update', e => music.classList.toggle('playing', !e.data.isPaused));
-    c.addListener('ready', () => { if (wantPlay) c.play(); });
+/* ---------- music (YouTube IFrame API: full song, loops forever) ---------- */
+let yt = null, ytReady = false, wantPlay = false;
+const music = $('#music'), musicBtn = $('#musicBtn'), musicMore = $('#musicMore');
+function setPlaying(on){ music.classList.toggle('playing', on); musicBtn.setAttribute('aria-pressed', on); musicBtn.setAttribute('aria-label', (on ? 'Pause' : 'Play') + ' snowfall by Øneheart and reidenshi'); }
+function playMusic(){ wantPlay = true; if (ytReady){ yt.unMute(); yt.setVolume(55); yt.playVideo(); } }
+function pauseMusic(){ wantPlay = false; if (ytReady) yt.pauseVideo(); }
+window.onYouTubeIframeAPIReady = () => {
+  yt = new YT.Player('ytPlayer', {
+    videoId: YT_VIDEO, width: '100%', height: '100%',
+    playerVars: {loop:1, playlist:YT_VIDEO, playsinline:1, rel:0, modestbranding:1},
+    events: {
+      onReady: () => { ytReady = true; if (wantPlay) playMusic(); },
+      onStateChange: e => {
+        if (e.data === YT.PlayerState.PLAYING) setPlaying(true);
+        else if (e.data === YT.PlayerState.PAUSED) setPlaying(false);
+        else if (e.data === YT.PlayerState.ENDED){ yt.seekTo(0); yt.playVideo(); } // never stop
+      }
+    }
   });
 };
-const sp = document.createElement('script'); sp.src = 'https://open.spotify.com/embed/iframe-api/v1'; sp.async = true; document.body.appendChild(sp);
-musicBtn.addEventListener('click', () => { const o = music.classList.toggle('open'); musicBtn.setAttribute('aria-expanded', o); });
-document.addEventListener('click', e => { if (!music.contains(e.target)) { music.classList.remove('open'); musicBtn.setAttribute('aria-expanded', false); } });
+const ytApi = document.createElement('script'); ytApi.src = 'https://www.youtube.com/iframe_api'; document.body.appendChild(ytApi);
+musicBtn.addEventListener('click', () => music.classList.contains('playing') ? pauseMusic() : playMusic());
+musicMore.addEventListener('click', () => { const o = music.classList.toggle('open'); musicMore.setAttribute('aria-expanded', o); });
+document.addEventListener('click', e => { if (!music.contains(e.target)) { music.classList.remove('open'); musicMore.setAttribute('aria-expanded', false); } });
 
 /* ---------- loader ---------- */
 function runLoader(){
@@ -1004,7 +1027,7 @@ function runLoader(){
   }, reduce ? 20 : 120);
 }
 function closeLoader(withMusic){
-  if (withMusic){ wantPlay = true; if (spotify) spotify.play(); }
+  if (withMusic) playMusic();
   const L = $('#loader');
   const done = () => { L.remove(); document.body.classList.remove('loading'); startSite(); };
   if (hasGSAP && !reduce) gsap.to(L, {opacity:0, scale:1.04, duration:.8, ease:'power2.inOut', onComplete:done});
