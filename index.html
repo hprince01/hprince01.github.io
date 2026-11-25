@@ -187,7 +187,7 @@ h2{font-family:var(--font-head);font-size:clamp(2rem,4.5vw,3.2rem);line-height:1
 .mock .m-grid span:nth-child(3){background:linear-gradient(135deg,#fecaca,#f87171)}
 .cover svg{width:100%;height:100%;display:block;transition:transform .6s var(--ease)}
 .project:hover .cover svg{transform:scale(1.04)}
-.umucyo-cover{background:#1E1512}.poster-cover{background:#0b0820}
+.gt-cover{background:#030407;position:relative}.gt-cover img{transition:transform .6s var(--ease)}.project:hover .gt-cover img{transform:scale(1.05)}.gt-title{position:absolute;left:18px;top:14px;font-family:var(--font-head);font-weight:700;font-size:1.6rem;line-height:.9;letter-spacing:-.02em;color:#fff}.gt-title em{font-style:normal;color:transparent;-webkit-text-stroke:1px #fff}.umucyo-cover{background:#1E1512}.poster-cover{background:#0b0820}
 .project-body h4 .kind{display:inline-block;vertical-align:middle;margin-left:8px;font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:rgba(139,92,246,.15);border:1px solid var(--line);color:var(--lilac)}
 .cover.soon{background:repeating-linear-gradient(45deg,rgba(139,92,246,.06) 0 12px,transparent 12px 24px),linear-gradient(135deg,#120c2e,#0a0719)}
 .cover.soon svg{width:54px;height:54px;color:var(--violet-2);opacity:.8}
@@ -581,6 +581,22 @@ footer p{color:var(--dim);font-size:.86rem}
     <div class="panel" id="panel-projects" role="tabpanel" aria-labelledby="tab-projects">
       <div class="projects">
         <article class="project glass">
+<a class="cover gt-cover" href="projects/night-drive/" aria-label="Open Night Drive, a BMW M4 tribute in 3D">
+  <img src="https://images.unsplash.com/photo-1563826773-1e2b4b2cde42?w=900&q=75&auto=format" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:50% 74%" />
+  <span class="gt-title">NIGHT<br /><em>DRIVE.</em></span>
+</a>
+<div class="project-body">
+  <h4>Night Drive <span class="kind" data-i18n="projects.gtKind">3D web experience</span></h4>
+  <p data-i18n="projects.gt">A cinematic scroll story and real-time 3D tribute to the BMW M4, mixed with photos and POV footage of my own black BMW. Headlights flicker on, a drone shot tilts flat, and a 3D car orbits as you scroll. Unofficial fan project.</p>
+  <div class="tags"><span>Three.js</span><span>WebGL</span><span>GSAP ScrollTrigger</span><span>3D parallax</span><span>Video</span></div>
+  <div class="project-links">
+    <a href="projects/night-drive/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 3 14 9-14 9V3z"/></svg>
+      <span data-i18n="projects.gtCta">Launch experience</span></a>
+            </div>
+          </div>
+        </article>
+        <article class="project glass">
           <a class="cover umucyo-cover" href="projects/umucyo/" aria-label="Open the Umucyo Coffee case study">
             <svg viewBox="0 0 320 200" aria-hidden="true">
               <defs>
@@ -857,7 +873,7 @@ const I18N = {
     "portfolio.kicker":"Ibikorwa byanjye","portfolio.title":"Ibyo","portfolio.title2":"nkora n'ibyo nkoresha","portfolio.sub":"Imishinga, ikoranabuhanga nkoresha, n'impamyabushobozi.",
     "portfolio.projects":"Imishinga","portfolio.stack":"Ikoranabuhanga","portfolio.certs":"Impamyabushobozi",
     "projects.agri":"Urubuga rw'ubucuruzi ruhuza abahinzi n'abaguzi babo.","projects.code":"Reba code",
-    "projects.umucyo":"Ikirango cy'igitekerezo cy'akabari k'ikawa i Kigali: ikirango cy'izuba rimeze nk'akabuto k'ikawa, amabara akomoka ku butaka bw'ibirunga n'imisozi itoshye, ishusho ishingiye ku migongo, n'ingero kuva ku gikombe kugeza ku iduka.","projects.poster":"Igikoresho cy'ubuhanzi gishushanya ama-poster hakoreshejwe code. Hitamo uburyo butanu n'amabara, uvange, wongereho inyandiko yawe hanyuma ubike PNG ya 2160 px.","projects.caseStudy":"Reba inyigo","projects.tryIt":"Gerageza","projects.brandKind":"Ikirango","projects.toolKind":"Creative coding",
+    "projects.gt":"Inkuru ya sinema ikurikira uko umanura urupapuro na 3D nzima yubaha BMW M4, ivanze n'amafoto n'amashusho y'imodoka yanjye ya BMW y'umukara. Amatara yaka, ifoto ya drone irahindukira, imodoka ya 3D ikazenguruka uko umanura. Umushinga w'umufana, utari uwa BMW.","projects.gtKind":"3D web","projects.gtCta":"Fungura","projects.umucyo":"Ikirango cy'igitekerezo cy'akabari k'ikawa i Kigali: ikirango cy'izuba rimeze nk'akabuto k'ikawa, amabara akomoka ku butaka bw'ibirunga n'imisozi itoshye, ishusho ishingiye ku migongo, n'ingero kuva ku gikombe kugeza ku iduka.","projects.poster":"Igikoresho cy'ubuhanzi gishushanya ama-poster hakoreshejwe code. Hitamo uburyo butanu n'amabara, uvange, wongereho inyandiko yawe hanyuma ubike PNG ya 2160 px.","projects.caseStudy":"Reba inyigo","projects.tryIt":"Gerageza","projects.brandKind":"Ikirango","projects.toolKind":"Creative coding",
     "projects.soonTitle":"Ibindi biva muri Kai Labs","projects.soon":"Imishinga mishya muri AI, ibishushanyo n'umutekano iraje. Nkurikira kuri GitHub.",
     "certs.empty":"Impamyabushobozi ziraza vuba.",
     "moments.kicker":"Hanze ya mudasobwa","moments.title":"Ibihe &","moments.title2":"Ibirori","moments.sub":"Ibirori, imiryango n'ahantu bigira uruhare mu rugendo rwanjye.",
