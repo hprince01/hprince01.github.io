@@ -742,7 +742,7 @@ const STACK = {
   "AI & Machine Learning": [["TensorFlow","tensorflow"],["PyTorch","pytorch"],["Scikit-learn","scikitlearn"],["NumPy","numpy"],["Pandas","pandas","fff"]],
   "Databases": [["PostgreSQL","postgresql"],["Supabase","supabase"],["MongoDB","mongodb"],["Oracle",null,null,"ORA"]],
   "Cybersecurity & Networking": [["Kali Linux","kalilinux"],["Wireshark","wireshark"],["Nmap",null,null,"NM"],["Cisco","cisco"],["Linux","linux","fff"]],
-  "Tools, Cloud & Design": [["Git","git"],["GitHub","github","fff"],["Docker","docker"],["Vercel","vercel","fff"],["AWS",null,null,"AWS"],["Postman","postman"],["Figma","figma"]],
+  "Tools, Cloud & Design": [["Git","git"],["GitHub","github","fff"],["Docker","docker"],["Vercel","vercel","fff"],["AWS",null,null,"AWS"],["Postman","postman"],["Figma","figma"],["Adobe Illustrator",null,null,"Ai","#330000","#FF9A00"],["Adobe Photoshop",null,null,"Ps","#001E36","#31A8FF"]],
 };
 
 const CERTS = [
@@ -828,10 +828,10 @@ const find = $('#findMe');
 /* ---------- tech stack ---------- */
 const sg = $('#stackGroups');
 Object.entries(STACK).forEach(([group, items]) => {
-  const tiles = items.map(([label, slug, color, mono]) => {
+  const tiles = items.map(([label, slug, color, mono, bg, fg]) => {
     const icon = slug
       ? `<img src="https://cdn.simpleicons.org/${slug}${color?'/'+color:''}" alt="" loading="lazy" data-mono="${label.slice(0,2).toUpperCase()}">`
-      : `<span class="mono">${mono}</span>`;
+      : `<span class="mono"${bg ? ` style="background:${bg};color:${fg};border:1px solid ${fg}55"` : ""}>${mono}</span>`;
     return `<div class="tile">${icon}<span>${label}</span></div>`;
   }).join('');
   sg.insertAdjacentHTML('beforeend', `<div class="stack-group glass"><h4>${group}</h4><div class="tiles">${tiles}</div></div>`);
