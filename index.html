@@ -187,7 +187,7 @@ h2{font-family:var(--font-head);font-size:clamp(2rem,4.5vw,3.2rem);line-height:1
 .mock .m-grid span:nth-child(3){background:linear-gradient(135deg,#fecaca,#f87171)}
 .cover svg{width:100%;height:100%;display:block;transition:transform .6s var(--ease)}
 .project:hover .cover svg{transform:scale(1.04)}
-.gt-cover{background:#030407;position:relative}.gt-cover img{transition:transform .6s var(--ease)}.project:hover .gt-cover img{transform:scale(1.05)}.gt-title{position:absolute;left:18px;top:14px;font-family:var(--font-head);font-weight:700;font-size:1.6rem;line-height:.9;letter-spacing:-.02em;color:#fff}.gt-title em{font-style:normal;color:transparent;-webkit-text-stroke:1px #fff}.xss-cover{background:#05070a}.umucyo-cover{background:#1E1512}.poster-cover{background:#0b0820}
+.gt-cover{background:#030407;position:relative}.gt-cover img{transition:transform .6s var(--ease)}.project:hover .gt-cover img{transform:scale(1.05)}.gt-title{position:absolute;left:18px;top:14px;font-family:var(--font-head);font-weight:700;font-size:1.6rem;line-height:.9;letter-spacing:-.02em;color:#fff}.gt-title em{font-style:normal;color:transparent;-webkit-text-stroke:1px #fff}.soma-cover{background:#071226}.xss-cover{background:#05070a}.umucyo-cover{background:#1E1512}.poster-cover{background:#0b0820}
 .project-body h4 .kind{display:inline-block;vertical-align:middle;margin-left:8px;font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:rgba(139,92,246,.15);border:1px solid var(--line);color:var(--lilac)}
 .cover.soon{background:repeating-linear-gradient(45deg,rgba(139,92,246,.06) 0 12px,transparent 12px 24px),linear-gradient(135deg,#120c2e,#0a0719)}
 .cover.soon svg{width:54px;height:54px;color:var(--violet-2);opacity:.8}
@@ -580,6 +580,38 @@ footer p{color:var(--dim);font-size:.86rem}
 
     <div class="panel" id="panel-projects" role="tabpanel" aria-labelledby="tab-projects">
       <div class="projects">
+<article class="project glass">
+  <a class="cover soma-cover" href="projects/soma-ai/" aria-label="Open Soma AI, the Kinyarwanda news classifier">
+    <svg viewBox="0 0 320 200" aria-hidden="true">
+      <rect width="320" height="200" fill="#071226"/>
+      <rect width="200" height="6" fill="#00A1DE"/><rect x="200" width="60" height="6" fill="#FAD201"/><rect x="260" width="60" height="6" fill="#20603D"/>
+      <g transform="translate(36 42)" fill="#FAD201"><circle r="10"/><g id="sr"><path d="M0 -20l2 8h-4z"/></g><use href="#sr" transform="rotate(45)"/><use href="#sr" transform="rotate(90)"/><use href="#sr" transform="rotate(135)"/><use href="#sr" transform="rotate(180)"/><use href="#sr" transform="rotate(225)"/><use href="#sr" transform="rotate(270)"/><use href="#sr" transform="rotate(315)"/></g>
+      <text x="64" y="50" font-family="Space Grotesk,Inter,sans-serif" font-weight="700" font-size="26" fill="#eaf2ff">Soma <tspan fill="#00A1DE">AI</tspan></text>
+      <rect x="22" y="72" width="168" height="96" rx="10" fill="#0d1b34" stroke="rgba(120,190,255,.25)"/>
+      <text x="34" y="94" font-family="Inter,sans-serif" font-size="10" fill="#cfe3ff">Abanyarwanda babuze</text>
+      <text x="34" y="110" font-family="Inter,sans-serif" font-size="10" fill="#cfe3ff">amahirwe yo kwegukana</text>
+      <rect x="32" y="116" width="34" height="13" rx="3" fill="rgba(62,207,122,.55)"/><text x="35" y="126" font-family="Inter,sans-serif" font-size="10" fill="#fff">agace</text>
+      <text x="70" y="126" font-family="Inter,sans-serif" font-size="10" fill="#cfe3ff">ka Tour du</text>
+      <rect x="32" y="133" width="50" height="13" rx="3" fill="rgba(62,207,122,.55)"/><text x="35" y="143" font-family="Inter,sans-serif" font-size="10" fill="#fff">Rwanda</text>
+      <text x="204" y="92" font-family="Inter,sans-serif" font-size="9" fill="#93a4c3">TOPIC</text>
+      <text x="204" y="114" font-family="Space Grotesk,Inter,sans-serif" font-weight="700" font-size="20" fill="#eaf2ff">Imikino</text>
+      <text x="204" y="132" font-family="Space Grotesk,Inter,sans-serif" font-weight="700" font-size="16" fill="#FAD201">84%</text>
+      <rect x="204" y="142" width="92" height="6" rx="3" fill="rgba(255,255,255,.08)"/><rect x="204" y="142" width="77" height="6" rx="3" fill="#FAD201"/>
+      <rect x="204" y="154" width="92" height="6" rx="3" fill="rgba(255,255,255,.08)"/><rect x="204" y="154" width="9" height="6" rx="3" fill="#00A1DE"/>
+      <text x="22" y="188" font-family="JetBrains Mono,monospace" font-size="9" fill="#93a4c3">21,268 Kinyarwanda articles · 14 topics · in-browser</text>
+    </svg>
+  </a>
+  <div class="project-body">
+    <h4>Soma AI <span class="kind" data-i18n="projects.somaKind">AI · NLP</span></h4>
+    <p data-i18n="projects.soma">An AI that reads Kinyarwanda news and predicts its topic, highlighting the words behind each decision. Trained in Python on 21,268 Rwandan news articles, compared across models, tested honestly on unseen news sites (domain shift), and running fully in the browser.</p>
+    <div class="tags"><span>Machine learning</span><span>NLP</span><span>Kinyarwanda</span><span>Python · scikit-learn</span><span>Explainable AI</span></div>
+    <div class="project-links">
+      <a href="projects/soma-ai/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 3 14 9-14 9V3z"/></svg>
+        <span data-i18n="projects.tryIt">Try it live</span></a>
+    </div>
+  </div>
+</article>
         <article class="project glass">
 <a class="cover gt-cover" href="projects/night-drive/" aria-label="Open Night Drive, a BMW M4 tribute in 3D">
   <img src="https://images.unsplash.com/photo-1563826773-1e2b4b2cde42?w=900&q=75&auto=format" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:50% 74%" />
@@ -906,7 +938,7 @@ const I18N = {
     "portfolio.kicker":"Ibikorwa byanjye","portfolio.title":"Ibyo","portfolio.title2":"nkora n'ibyo nkoresha","portfolio.sub":"Imishinga, ikoranabuhanga nkoresha, n'impamyabushobozi.",
     "portfolio.projects":"Imishinga","portfolio.stack":"Ikoranabuhanga","portfolio.certs":"Impamyabushobozi",
     "projects.agri":"Urubuga rw'ubucuruzi ruhuza abahinzi n'abaguzi babo.","projects.code":"Reba code",
-    "projects.xss":"Laboratwari ikoreshwa mu mutekano: yerekana uko stored XSS ikora. Ohereza payload itagira ingaruka, urebe uko ibikwa n'uko ikora muri browser y'undi muntu, hanyuma uyihagarike ukoresheje output encoding, sanitizer cyangwa Content-Security-Policy.","projects.xssKind":"Umutekano","projects.gt":"Inkuru ya sinema ikurikira uko umanura urupapuro na 3D nzima yubaha BMW M4, ivanze n'amafoto n'amashusho y'imodoka yanjye ya BMW y'umukara. Amatara yaka, ifoto ya drone irahindukira, imodoka ya 3D ikazenguruka uko umanura. Umushinga w'umufana, utari uwa BMW.","projects.gtKind":"3D web","projects.gtCta":"Fungura","projects.umucyo":"Ikirango cy'igitekerezo cy'akabari k'ikawa i Kigali: ikirango cy'izuba rimeze nk'akabuto k'ikawa, amabara akomoka ku butaka bw'ibirunga n'imisozi itoshye, ishusho ishingiye ku migongo, n'ingero kuva ku gikombe kugeza ku iduka.","projects.poster":"Igikoresho cy'ubuhanzi gishushanya ama-poster hakoreshejwe code. Hitamo uburyo butanu n'amabara, uvange, wongereho inyandiko yawe hanyuma ubike PNG ya 2160 px.","projects.caseStudy":"Reba inyigo","projects.tryIt":"Gerageza","projects.brandKind":"Ikirango","projects.toolKind":"Creative coding",
+    "projects.soma":"AI isoma amakuru mu Kinyarwanda ikamenya insanganyamatsiko yayo, ikagaragaza amagambo yatumye ifata icyemezo. Yigishijwe muri Python inkuru 21,268 zo mu bitangazamakuru byo mu Rwanda, igereranywa n'izindi moderi, igeragezwa ku mbuga z'amakuru itigeze ibona, kandi ikorera muri browser yose.","projects.somaKind":"AI · Ururimi","projects.xss":"Laboratwari ikoreshwa mu mutekano: yerekana uko stored XSS ikora. Ohereza payload itagira ingaruka, urebe uko ibikwa n'uko ikora muri browser y'undi muntu, hanyuma uyihagarike ukoresheje output encoding, sanitizer cyangwa Content-Security-Policy.","projects.xssKind":"Umutekano","projects.gt":"Inkuru ya sinema ikurikira uko umanura urupapuro na 3D nzima yubaha BMW M4, ivanze n'amafoto n'amashusho y'imodoka yanjye ya BMW y'umukara. Amatara yaka, ifoto ya drone irahindukira, imodoka ya 3D ikazenguruka uko umanura. Umushinga w'umufana, utari uwa BMW.","projects.gtKind":"3D web","projects.gtCta":"Fungura","projects.umucyo":"Ikirango cy'igitekerezo cy'akabari k'ikawa i Kigali: ikirango cy'izuba rimeze nk'akabuto k'ikawa, amabara akomoka ku butaka bw'ibirunga n'imisozi itoshye, ishusho ishingiye ku migongo, n'ingero kuva ku gikombe kugeza ku iduka.","projects.poster":"Igikoresho cy'ubuhanzi gishushanya ama-poster hakoreshejwe code. Hitamo uburyo butanu n'amabara, uvange, wongereho inyandiko yawe hanyuma ubike PNG ya 2160 px.","projects.caseStudy":"Reba inyigo","projects.tryIt":"Gerageza","projects.brandKind":"Ikirango","projects.toolKind":"Creative coding",
     "projects.soonTitle":"Ibindi biva muri Kai Labs","projects.soon":"Imishinga mishya muri AI, ibishushanyo n'umutekano iraje. Nkurikira kuri GitHub.",
     "certs.empty":"Impamyabushobozi ziraza vuba.",
     "moments.kicker":"Hanze ya mudasobwa","moments.title":"Ibihe &","moments.title2":"Ibirori","moments.sub":"Ibirori, imiryango n'ahantu bigira uruhare mu rugendo rwanjye.",
