@@ -187,7 +187,7 @@ h2{font-family:var(--font-head);font-size:clamp(2rem,4.5vw,3.2rem);line-height:1
 .mock .m-grid span:nth-child(3){background:linear-gradient(135deg,#fecaca,#f87171)}
 .cover svg{width:100%;height:100%;display:block;transition:transform .6s var(--ease)}
 .project:hover .cover svg{transform:scale(1.04)}
-.gt-cover{background:#030407;position:relative}.gt-cover img{transition:transform .6s var(--ease)}.project:hover .gt-cover img{transform:scale(1.05)}.gt-title{position:absolute;left:18px;top:14px;font-family:var(--font-head);font-weight:700;font-size:1.6rem;line-height:.9;letter-spacing:-.02em;color:#fff}.gt-title em{font-style:normal;color:transparent;-webkit-text-stroke:1px #fff}.umucyo-cover{background:#1E1512}.poster-cover{background:#0b0820}
+.gt-cover{background:#030407;position:relative}.gt-cover img{transition:transform .6s var(--ease)}.project:hover .gt-cover img{transform:scale(1.05)}.gt-title{position:absolute;left:18px;top:14px;font-family:var(--font-head);font-weight:700;font-size:1.6rem;line-height:.9;letter-spacing:-.02em;color:#fff}.gt-title em{font-style:normal;color:transparent;-webkit-text-stroke:1px #fff}.xss-cover{background:#05070a}.umucyo-cover{background:#1E1512}.poster-cover{background:#0b0820}
 .project-body h4 .kind{display:inline-block;vertical-align:middle;margin-left:8px;font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:rgba(139,92,246,.15);border:1px solid var(--line);color:var(--lilac)}
 .cover.soon{background:repeating-linear-gradient(45deg,rgba(139,92,246,.06) 0 12px,transparent 12px 24px),linear-gradient(135deg,#120c2e,#0a0719)}
 .cover.soon svg{width:54px;height:54px;color:var(--violet-2);opacity:.8}
@@ -596,6 +596,39 @@ footer p{color:var(--dim);font-size:.86rem}
             </div>
           </div>
         </article>
+<article class="project glass">
+  <a class="cover xss-cover" href="projects/xss-lab/" aria-label="Open the Kai XSS Lab">
+    <svg viewBox="0 0 320 200" aria-hidden="true">
+      <rect width="320" height="200" fill="#05070a"/>
+      <g font-family="JetBrains Mono,ui-monospace,monospace" font-size="9.5">
+        <text x="18" y="34" fill="#3dff9e">$ post comment</text>
+        <text x="18" y="54" fill="#ff4d6d">&lt;img src=x onerror=leak()&gt;</text>
+        <text x="18" y="78" fill="#8a9a93">defence: none</text>
+        <text x="18" y="94" fill="#ff4d6d">✗ script executed</text>
+        <text x="18" y="118" fill="#8a9a93">defence: output encoding</text>
+        <text x="18" y="134" fill="#3dff9e">✓ rendered as text</text>
+      </g>
+      <rect x="196" y="22" width="106" height="132" rx="8" fill="#fff"/>
+      <rect x="196" y="22" width="106" height="14" rx="8" fill="#e9edf2"/>
+      <rect x="204" y="44" width="60" height="6" rx="2" fill="#222"/>
+      <rect x="204" y="58" width="88" height="4" rx="2" fill="#ccc"/><rect x="204" y="68" width="74" height="4" rx="2" fill="#ccc"/>
+      <rect x="204" y="84" width="90" height="30" rx="4" fill="#ffe1e6"/>
+      <text x="249" y="103" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700" font-size="11" fill="#c00">HACKED</text>
+      <rect x="204" y="124" width="80" height="4" rx="2" fill="#ccc"/><rect x="204" y="134" width="64" height="4" rx="2" fill="#ccc"/>
+      <text x="18" y="182" font-family="Space Grotesk,Inter,sans-serif" font-weight="700" font-size="17" fill="#e7f2ec">KAI XSS LAB</text>
+    </svg>
+  </a>
+  <div class="project-body">
+    <h4>Kai XSS Lab <span class="kind" data-i18n="projects.xssKind">Cybersecurity</span></h4>
+    <p data-i18n="projects.xss">An interactive, sandboxed lab that shows how stored XSS works: post a harmless payload, watch it get stored, see it run in a victim’s browser, then stop it with output encoding, a sanitizer or a Content-Security-Policy.</p>
+    <div class="tags"><span>Web security</span><span>XSS</span><span>CSP</span><span>JavaScript</span><span>Sandboxed iframes</span></div>
+    <div class="project-links">
+      <a href="projects/xss-lab/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 3 14 9-14 9V3z"/></svg>
+        <span data-i18n="projects.tryIt">Try it live</span></a>
+    </div>
+  </div>
+</article>
         <article class="project glass">
           <a class="cover umucyo-cover" href="projects/umucyo/" aria-label="Open the Umucyo Coffee case study">
             <svg viewBox="0 0 320 200" aria-hidden="true">
@@ -873,7 +906,7 @@ const I18N = {
     "portfolio.kicker":"Ibikorwa byanjye","portfolio.title":"Ibyo","portfolio.title2":"nkora n'ibyo nkoresha","portfolio.sub":"Imishinga, ikoranabuhanga nkoresha, n'impamyabushobozi.",
     "portfolio.projects":"Imishinga","portfolio.stack":"Ikoranabuhanga","portfolio.certs":"Impamyabushobozi",
     "projects.agri":"Urubuga rw'ubucuruzi ruhuza abahinzi n'abaguzi babo.","projects.code":"Reba code",
-    "projects.gt":"Inkuru ya sinema ikurikira uko umanura urupapuro na 3D nzima yubaha BMW M4, ivanze n'amafoto n'amashusho y'imodoka yanjye ya BMW y'umukara. Amatara yaka, ifoto ya drone irahindukira, imodoka ya 3D ikazenguruka uko umanura. Umushinga w'umufana, utari uwa BMW.","projects.gtKind":"3D web","projects.gtCta":"Fungura","projects.umucyo":"Ikirango cy'igitekerezo cy'akabari k'ikawa i Kigali: ikirango cy'izuba rimeze nk'akabuto k'ikawa, amabara akomoka ku butaka bw'ibirunga n'imisozi itoshye, ishusho ishingiye ku migongo, n'ingero kuva ku gikombe kugeza ku iduka.","projects.poster":"Igikoresho cy'ubuhanzi gishushanya ama-poster hakoreshejwe code. Hitamo uburyo butanu n'amabara, uvange, wongereho inyandiko yawe hanyuma ubike PNG ya 2160 px.","projects.caseStudy":"Reba inyigo","projects.tryIt":"Gerageza","projects.brandKind":"Ikirango","projects.toolKind":"Creative coding",
+    "projects.xss":"Laboratwari ikoreshwa mu mutekano: yerekana uko stored XSS ikora. Ohereza payload itagira ingaruka, urebe uko ibikwa n'uko ikora muri browser y'undi muntu, hanyuma uyihagarike ukoresheje output encoding, sanitizer cyangwa Content-Security-Policy.","projects.xssKind":"Umutekano","projects.gt":"Inkuru ya sinema ikurikira uko umanura urupapuro na 3D nzima yubaha BMW M4, ivanze n'amafoto n'amashusho y'imodoka yanjye ya BMW y'umukara. Amatara yaka, ifoto ya drone irahindukira, imodoka ya 3D ikazenguruka uko umanura. Umushinga w'umufana, utari uwa BMW.","projects.gtKind":"3D web","projects.gtCta":"Fungura","projects.umucyo":"Ikirango cy'igitekerezo cy'akabari k'ikawa i Kigali: ikirango cy'izuba rimeze nk'akabuto k'ikawa, amabara akomoka ku butaka bw'ibirunga n'imisozi itoshye, ishusho ishingiye ku migongo, n'ingero kuva ku gikombe kugeza ku iduka.","projects.poster":"Igikoresho cy'ubuhanzi gishushanya ama-poster hakoreshejwe code. Hitamo uburyo butanu n'amabara, uvange, wongereho inyandiko yawe hanyuma ubike PNG ya 2160 px.","projects.caseStudy":"Reba inyigo","projects.tryIt":"Gerageza","projects.brandKind":"Ikirango","projects.toolKind":"Creative coding",
     "projects.soonTitle":"Ibindi biva muri Kai Labs","projects.soon":"Imishinga mishya muri AI, ibishushanyo n'umutekano iraje. Nkurikira kuri GitHub.",
     "certs.empty":"Impamyabushobozi ziraza vuba.",
     "moments.kicker":"Hanze ya mudasobwa","moments.title":"Ibihe &","moments.title2":"Ibirori","moments.sub":"Ibirori, imiryango n'ahantu bigira uruhare mu rugendo rwanjye.",
