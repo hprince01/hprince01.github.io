@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Victim browser (sandboxed demo)</title><meta name="robots" content="noindex"></head>
+<body>
+<!--
+  Kai XSS Lab: the "victim browser".
+  This page is INTENTIONALLY vulnerable and has no Content-Security-Policy of its own:
+  the lab sends it a whole demo page (comments + chosen defence) and it renders that page.
+  It is only ever loaded inside <iframe sandbox="allow-scripts">, so it runs in an opaque origin
+  with no access to the lab page, its cookies or storage. Opened directly, it does nothing.
+-->
+<script>
+addEventListener('message', function (e) {
+  if (e.source !== parent || !e.data || e.data.lab !== 'xss-doc' || typeof e.data.html !== 'string') return;
+  document.open(); document.write(e.data.html); document.close();
+});
+parent.postMessage({ lab: 'xss', type: 'ready' }, '*');
+</script>
+</body></html>

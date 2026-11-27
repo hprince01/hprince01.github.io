@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; script-src 'self' https://cdn.jsdelivr.net/npm/gsap@3.15.1/ https://unpkg.com/lenis@1.3.29/; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com/lenis@1.3.29/; font-src https://fonts.gstatic.com; img-src 'self' data:" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Umucyo Coffee — Brand Identity Case Study | Prince Hirwa</title>
 <meta name="description" content="Umucyo Coffee: a concept brand identity for a Kigali specialty coffee bar. Logo, colour, typography, imigongo-inspired pattern and brand applications by Prince Hirwa Rutagengwa (Kai Labs)." />
@@ -9,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css" />
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.3.29/dist/lenis.css" integrity="sha384-gvLq/iOMNnPchdosgVym5huSVkKipHCQaqSw2Eg0V52Mzmlf169ZOsXcNc2cNu8x" crossorigin="anonymous" />
 <style>
 :root{
   --volcano:#1E1512; --roast:#6B3E26; --amber:#F2A93B; --hill:#3E6B48; --cream:#F6EEDF; --clay:#C8643B; --mist:#E8DCC6;
@@ -557,34 +558,9 @@ footer{background:var(--volcano);color:var(--mist);text-align:center;font-size:.
 
 <div class="copied" id="copied" role="status"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-<script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
-<script>
-document.getElementById('y').textContent = new Date().getFullYear();
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-// copy hex
-const toast = document.getElementById('copied');
-document.querySelectorAll('.sw').forEach(b => b.addEventListener('click', async () => {
-  try { await navigator.clipboard.writeText(b.dataset.hex); toast.textContent = b.dataset.hex + ' copied'; }
-  catch { toast.textContent = b.dataset.hex; }
-  toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1400);
-}));
-
-if (!reduce && window.gsap){
-  gsap.registerPlugin(ScrollTrigger);
-  if (window.Lenis){ const l = new Lenis({lerp:.09}); l.on('scroll', ScrollTrigger.update); gsap.ticker.add(t => l.raf(t*1000)); gsap.ticker.lagSmoothing(0); }
-  // hero: mark rises like the sun
-  gsap.from('.hero-mark', {y:80, scale:.7, opacity:0, duration:1.6, ease:'expo.out'});
-  gsap.from('.h-in', {y:30, opacity:0, duration:1, stagger:.12, delay:.4, ease:'power3.out'});
-  gsap.to('.hero-mark', {y:-60, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
-  gsap.utils.toArray('.reveal').forEach(el => gsap.from(el, {y:40, opacity:0, duration:1, ease:'power3.out', scrollTrigger:{trigger:el, start:'top 88%'}}));
-  // construction guides draw in
-  gsap.from('#guides > *', {opacity:0, duration:.6, stagger:.12, scrollTrigger:{trigger:'.construct', start:'top 75%'}});
-  // pattern slowly drifts
-  gsap.to('.pattern-show svg', {x:-60, ease:'none', scrollTrigger:{trigger:'.pattern-show', start:'top bottom', end:'bottom top', scrub:true}});
-}
-</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/gsap.min.js" integrity="sha384-3vCAhD+a3BOliP3QqjQINn6ZWiZxoqu0WFxX5ZQZgqekDZuSb1mJBrrLMmu94H8f" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/ScrollTrigger.min.js" integrity="sha384-H2WL1iy/jKQQ7MTHU2hskZKNHTYWWD/KgKE1vCNnaWY8An2ESTh23KN/fTp8XS3j" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lenis@1.3.29/dist/lenis.min.js" integrity="sha384-OHGPFWKcc+jP8Q7LpOJtmcyBSz6L1L/nH2wKWNQ456cvisoFPacxtBsDQPmwEjLu" crossorigin="anonymous"></script>
+<script src="app.js"></script>
 </body>
 </html>
