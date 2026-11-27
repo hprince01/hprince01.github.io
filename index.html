@@ -246,6 +246,14 @@ dialog.viewer::backdrop{background:rgba(5,4,13,.88);backdrop-filter:blur(6px)}
 .gallery{display:grid;grid-template-columns:1.2fr 1fr 1fr;grid-auto-rows:260px;gap:18px}
 .shot{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
 .shot.tall{grid-row:span 2}
+.g-hero{grid-column:span 2}
+@media (min-width:981px){
+  .gallery .g-f1{grid-column:1;grid-row:1/span 2}
+  .gallery .g-event{grid-column:2/span 2;grid-row:1}
+  .gallery .g-banner{grid-column:2;grid-row:2}
+  .gallery .g-style{grid-column:3;grid-row:2/span 2}
+  .gallery .g-hero{grid-column:1/span 2;grid-row:3}
+}
 .shot img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
 .shot:hover img{transform:scale(1.06)}
 .shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 18px 16px;background:linear-gradient(transparent,rgba(5,4,13,.9));font-size:.9rem;font-weight:500}
@@ -334,6 +342,8 @@ footer p{color:var(--dim);font-size:.86rem}
   .facts,.find{grid-template-columns:1fr}
   .gallery{grid-template-columns:1fr;grid-auto-rows:300px}
   .shot.tall{grid-row:span 1}
+  .shot.tall img[src*="kigali-style"]{object-position:62% 62%!important}
+  .g-hero{grid-column:auto}
   .stats{gap:12px}.stat{padding:20px 16px}.stat b{font-size:2rem}
   .projects,.stack-groups{grid-template-columns:1fr}
   .music-pill .txt{display:none}
@@ -790,10 +800,11 @@ footer p{color:var(--dim);font-size:.86rem}
       <p class="reveal" data-i18n="moments.sub">Events, communities and places that shape my journey.</p>
     </div>
     <div class="gallery">
-      <figure class="shot tall reveal"><img src="assets/f1-grand-prix.jpg" alt="Prince at the Formula 1 Grand Prix event presented by Visit Rwanda" loading="lazy" /><figcaption><small>Kigali</small><span data-i18n="moments.f1">Formula 1 Grand Prix · Visit Rwanda</span></figcaption></figure>
-      <figure class="shot reveal"><img src="assets/globx-banner.jpg" alt="Prince standing beside a globx Odoo banner" loading="lazy" style="object-position:50% 25%" /><figcaption><small>globx</small><span data-i18n="moments.globx">Odoo for All · tech event</span></figcaption></figure>
-      <figure class="shot reveal"><img src="assets/globx-event.jpg" alt="Audience at the globx Odoo for All presentation" loading="lazy" style="object-position:50% 45%" /><figcaption><small data-i18n="moments.learning">Learning</small><span data-i18n="moments.audience">In the room at Odoo for All</span></figcaption></figure>
-      <figure class="shot reveal" style="grid-column:span 2"><img src="assets/hero.jpg" alt="Prince Hirwa in a double-breasted suit" loading="lazy" style="object-position:50% 25%" /><figcaption><small>Kai Labs</small><span>Build · Innovate · Empower</span></figcaption></figure>
+      <figure class="shot tall g-f1 reveal"><img src="assets/f1-grand-prix.jpg" alt="Prince at the Formula 1 Grand Prix event presented by Visit Rwanda" loading="lazy" /><figcaption><small>Kigali</small><span data-i18n="moments.f1">Formula 1 Grand Prix · Visit Rwanda</span></figcaption></figure>
+      <figure class="shot g-banner reveal"><img src="assets/globx-banner.jpg" alt="Prince standing beside a globx Odoo banner" loading="lazy" style="object-position:50% 25%" /><figcaption><small>globx</small><span data-i18n="moments.globx">Odoo for All · tech event</span></figcaption></figure>
+      <figure class="shot tall g-style reveal"><img src="assets/kigali-style.jpg" alt="Prince in a blue and purple outfit standing in front of a black Mercedes-Benz G-Class in Kigali" loading="lazy" style="object-position:62% 68%" /><figcaption><small>Kigali</small><span data-i18n="moments.style">Style, culture &amp; celebration</span></figcaption></figure>
+      <figure class="shot g-event reveal"><img src="assets/globx-event.jpg" alt="Audience at the globx Odoo for All presentation" loading="lazy" style="object-position:50% 45%" /><figcaption><small data-i18n="moments.learning">Learning</small><span data-i18n="moments.audience">In the room at Odoo for All</span></figcaption></figure>
+      <figure class="shot g-hero reveal"><img src="assets/hero.jpg" alt="Prince Hirwa in a double-breasted suit" loading="lazy" style="object-position:50% 25%" /><figcaption><small>Kai Labs</small><span>Build · Innovate · Empower</span></figcaption></figure>
     </div>
   </div>
 </section>
@@ -942,7 +953,7 @@ const I18N = {
     "projects.soonTitle":"Ibindi biva muri Kai Labs","projects.soon":"Imishinga mishya muri AI, ibishushanyo n'umutekano iraje. Nkurikira kuri GitHub.",
     "certs.empty":"Impamyabushobozi ziraza vuba.",
     "moments.kicker":"Hanze ya mudasobwa","moments.title":"Ibihe &","moments.title2":"Ibirori","moments.sub":"Ibirori, imiryango n'ahantu bigira uruhare mu rugendo rwanjye.",
-    "moments.f1":"Formula 1 Grand Prix · Visit Rwanda","moments.globx":"Odoo for All · igikorwa cy'ikoranabuhanga","moments.learning":"Kwiga","moments.audience":"Muri Odoo for All",
+    "moments.f1":"Formula 1 Grand Prix · Visit Rwanda","moments.globx":"Odoo for All · igikorwa cy'ikoranabuhanga","moments.learning":"Kwiga","moments.audience":"Muri Odoo for All","moments.style":"Imyambarire, umuco n'ibirori",
     "contact.kicker":"Twandikire","contact.title":"Reka","contact.title2":"dukorane","contact.sub":"Ufite umushinga, igitekerezo cyangwa ushaka kunsuhuza? Nkwandikire.",
     "contact.formTitle":"Ohereza ubutumwa","contact.formSub":"Nzagusubiza vuba bishoboka.",
     "form.name":"Izina ryawe","form.email":"Imeri yawe","form.message":"Ubutumwa","form.send":"Ohereza ubutumwa",
